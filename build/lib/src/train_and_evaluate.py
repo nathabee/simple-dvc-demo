@@ -9,12 +9,11 @@ import numpy as np
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import ElasticNet
-from src.get_data import read_params
+from get_data import read_params
 import argparse
 import joblib
 import json
 
-print("entree")
 
 def eval_metrics(actual, pred):
     rmse = np.sqrt(mean_squared_error(actual, pred))
@@ -34,7 +33,6 @@ def train_and_evaluate(config_path):
 
     target = [config["base"]["target_col"]]
 
-    print(train_data_path)
     train = pd.read_csv(train_data_path, sep=",")
     test = pd.read_csv(test_data_path, sep=",")
 
@@ -92,5 +90,3 @@ if __name__ == "__main__":
     args.add_argument("--config", default="params.yaml")
     parsed_args = args.parse_args()
     train_and_evaluate(config_path=parsed_args.config)
-
- 

@@ -30,7 +30,6 @@ def predict(data):
     model_dir_path = config["webapp_model_dir"]
     model = joblib.load(model_dir_path)
     prediction = model.predict(data).tolist()[0]
-    #prediction = 5
     try:
         if 3 <= prediction <= 8:
             return prediction
